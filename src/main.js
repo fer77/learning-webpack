@@ -1,1 +1,1 @@
-alert('npm watch');
+alert('webpack config file');

@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-alert('npm watch');
+alert('webpack config file');
 
 /***/ })
 /******/ ]);
