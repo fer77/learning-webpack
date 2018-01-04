@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack src/main.js dist/bundle.js",
-    "watch": "npm run build --watch"
+    "build": "webpack",
+    "watch": "npm run build -- --watch"
   },
   "keywords": [],
   "author": "",
