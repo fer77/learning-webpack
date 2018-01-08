@@ -1,1 +1,1 @@
-alert('webpack config file');
+require('./main.css');
