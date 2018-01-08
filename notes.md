@@ -81,3 +81,48 @@ Or import all the named exports onto an object:
 import * as MyClasses from "./MyClass";
 // use MyClasses.MyClass and MyClass.MyOtherClass here
 ```
+
+## 4
+
+**loaders** allows the bundle of static resources beyond JavaScript. Loaders can be written using Node.js. 
+
+css loader:
+tells webpack how to interact/use css files.
+
+```bash
+npm install css-loader --save-dev
+```
+
+```javascript
+//...
+module: {
+        rules: [
+            {
+              // specify which files it should apply to:
+                test: /\.css$/,
+              // specify what loader to use:
+                use: 'css-loader'
+            }
+        ]
+    }
+//...
+```
+
+```bash
+npm install style-loader --save-dev
+```
+
+takes the css from the build file and inject it into the page.
+
+```javascript
+//...
+module: {
+        rules: [
+            {
+              //...
+                use: ['style-loader', 'css-loader']// Reads from right to left.
+            }
+        ]
+    }
+//...
+```
