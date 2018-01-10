@@ -126,3 +126,16 @@ module: {
     }
 //...
 ```
+
+## 5
+
+[Babel](https://babeljs.io/)
+
+- require babel in the project:
+`npm install --save-dev babel-loader babel-core`
+- add babel to rules:
+`{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }`
+- install presets:
+`npm install --save-dev babel-preset-es2015`
+- create `.babelrc` file to add plugins:
+`{ "presets": ["es2015"] }`
