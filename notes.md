@@ -139,3 +139,32 @@ module: {
 `npm install --save-dev babel-preset-es2015`
 - create `.babelrc` file to add plugins:
 `{ "presets": ["es2015"] }`
+
+## 6
+
+_plugins_ are the 'bedrock' of webpack.
+
+minification:
+
+```javascript
+// webpack.config.js
+//...
+    plugins: [
+            new webpack.optimize.UglifyJsPlugin()
+        ]
+//...
+```
+
+Often, you'll want to use one set of configuration for development, and another set for production:
+
+```javascript
+//package.json
+//...
+"scripts": {
+    //...
+    "dev": "webpack",
+    "production": "NODE_ENV=PRODUCTION webpack",
+    //...
+  },
+  //...
+```
