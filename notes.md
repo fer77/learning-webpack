@@ -168,3 +168,17 @@ Often, you'll want to use one set of configuration for development, and another 
   },
   //...
 ```
+
+## 7
+
+sass compilation
+remember, _loaders_ help webpack understand what it (webpack) needs to do and how to do it.
+
+- This compiles SASS to CSS
+`npm install sass-loader node-sass --save-dev`
+
+_sass-loader_ compiles sass to css.
+
+_css-loader_ updates imports and url calls. Allows minification and wraps css in a _common.js_ module so webpack can read it.
+
+_style-loader_ "physically" injects styles into the DOM
