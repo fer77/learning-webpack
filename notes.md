@@ -182,3 +182,72 @@ _sass-loader_ compiles sass to css.
 _css-loader_ updates imports and url calls. Allows minification and wraps css in a _common.js_ module so webpack can read it.
 
 _style-loader_ "physically" injects styles into the DOM
+
+## 8
+to extract css:
+
+[Extract Text Plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin)
+- `npm install --save-dev extract-text-webpack-plugin`
+
+To use a "generic" name for the style sheet a _place holder_ can be used in the `config `file:
+
+```javascript
+// webpack.config.js
+//...
+},
+    plugins: [
+        new ExtractTextPlugin('[name].css')
+    ]
+};
+//...
+```
+
+for the `entry` in the `webpack.config.js` file an object can be used:
+
+```javascript
+//webpack.config.js
+//...
+    entry: {
+        app: './src/main.js'
+    },
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        filename: 'bundle.js'
+    },
+//...
+```
+
+would create an `app.css` (name of entry point) and a `bundle.js` (explicit name for the output).
+
+instead of `require('./main.scss');` in the `main.js` file it can be required in the `webpack.config.js` file, by adding it to the app entry point:
+
+```javascript
+// webpack.config.js
+//...
+    entry: {
+        app: [
+            './src/main.js',
+             './src/main.scss'
+            ]
+    },
+//...
+```
+
+[loader options](https://webpack.js.org/plugins/loader-options-plugin/)
+
+- `options.minimize` (`boolean`): Where loaders can be switched to minimize mode.
+
+add the variable created to tell webpack when in prod or dev instead of the boolean option:
+
+```javascript
+//webpack.config.js
+//...
+    plugins: [
+        new ExtractTextPlugin('[name].css'),
+
+        new webpack.LoaderOptionsPlugin({
+            minimize: inProduction
+        })
+    ]
+//...
+```
