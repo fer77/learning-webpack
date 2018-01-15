@@ -251,3 +251,46 @@ add the variable created to tell webpack when in prod or dev instead of the bool
     ]
 //...
 ```
+
+## 8
+
+- Relative URLs within your stylesheets reads it as absolute paths (useful when using a legacy project).
+
+- pass an option to _css-loader_ (useful when using a legacy project).
+
+```javascript
+//webpack.config.js
+//...
+use: [{
+        loader: 'css-loader',
+        options: { url: false }
+    },
+
+    'sass-loader'
+]
+//...
+```
+
+- use a pluging like _raw-loader_ (useful when using a legacy project).
+
+```javascript
+//webpack.config.js
+//...
+    use: ['raw-loader', 'sass-loader'],
+//...
+```
+
+- _file\_loader_
+
+```javascript
+//webpack.config.js
+//...
+{
+    test: /\.png$/,
+    loader: 'file-loader',
+    options: {
+        name: 'images/[name].[hash].[ext]'
+    }
+},
+//...
+```
