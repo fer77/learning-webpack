@@ -294,3 +294,26 @@ use: [{
 },
 //...
 ```
+
+## 9
+
+Strip unused css
+
+- `npm i -D purifycss-webpack purify-css`
+
+```javascript
+// webpack.config.js
+plugins: [
+    //...
+
+        new PurifyCSSPlugin({
+            // Give paths to parse for rules. These should be absolute!
+            paths: glob.sync(path.join(__dirname, 'app/*.html')),
+            minimize: inProduction
+        }),
+
+    //...
+    ]
+```
+
+This plugin works with classes, id's, and selectors.
