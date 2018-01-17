@@ -317,3 +317,13 @@ plugins: [
 ```
 
 This plugin works with classes, id's, and selectors.
+
+## 10
+
+`[hashs]` webpack will genereate a unique hash for the build file. But will be applied to all files, even if no changes have occured on those files.
+
+`[chunkhash]` will generate a unique hash for each build file and apply it only to the files that were changed.
+
+clearing `dist` folder:
+
+- `npm i clean-webpack-plugin --save-dev`
