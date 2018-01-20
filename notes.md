@@ -327,3 +327,7 @@ This plugin works with classes, id's, and selectors.
 clearing `dist` folder:
 
 - `npm i clean-webpack-plugin --save-dev`
+
+## 11
+
+If the file hash keeps changing, we can no longer hardcode the path. Instead, let webpack can generate a `manifest.json` file. This way, the path can be dynamically determined and the proper hash fetched.
