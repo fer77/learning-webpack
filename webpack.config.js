@@ -64,7 +64,17 @@ module.exports = {
 
         new webpack.LoaderOptionsPlugin({
             minimize: inProduction
-        })
+        }),
+
+// Webpack will fire this function and will containe the compile stats: 
+        function() {
+            this.plugin('done', stats => {
+                require('fs').writeFileSync(
+                    path.join(__dirname, 'dist/manifest.json'),
+                    JSON.stringify(stats.toJson().assetsByChunkName)
+                    );
+            })
+        }
     ]
 };
 
