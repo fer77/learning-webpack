@@ -5,6 +5,7 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let inProduction = (process.env.NODE_ENV === 'production');
 let PurifyCSSPlugin = require('purifycss-webpack');
+let buildManifestPlugin = require('./build/plugins/buildManifestPlugin');
 
 module.exports = {
     entry: {
@@ -67,16 +68,17 @@ module.exports = {
         new webpack.LoaderOptionsPlugin({
             minimize: inProduction
         }),
-
+        
+        new buildManifestPlugin(),
 // Webpack will fire this function and will containe the compile stats: 
-        function() {
-            this.plugin('done', stats => {
-                require('fs').writeFileSync(
-                    path.join(__dirname, 'dist/manifest.json'),
-                    JSON.stringify(stats.toJson().assetsByChunkName)
-                    );
-            })
-        }
+        // function() {
+            // this.plugin('done', stats => {
+            //     require('fs').writeFileSync(
+            //         path.join(__dirname, 'dist/manifest.json'),
+            //         JSON.stringify(stats.toJson().assetsByChunkName)
+            //         );
+            // })
+        // }
     ]
 };
 
