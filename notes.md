@@ -337,3 +337,27 @@ If the file hash keeps changing, we can no longer hardcode the path. Instead, le
 Image optimization
 
 `npm install img-loader --save-dev`
+
+## 13
+
+All webpack plugins have a general ES5 constructor:
+
+```javascript
+function BuildManifestPlugin() {
+    //...
+}
+```
+
+and an apply method on its prototype:
+
+```javascript
+BuildManifestPlugin.prototype.apply = function(compiler) {
+    //...
+}
+```
+
+finnally export the plugin:
+
+```javascript
+module.exports = BuildManifestPlugin;
+```
