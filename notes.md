@@ -331,3 +331,9 @@ clearing `dist` folder:
 ## 11
 
 If the file hash keeps changing, we can no longer hardcode the path. Instead, let webpack can generate a `manifest.json` file. This way, the path can be dynamically determined and the proper hash fetched.
+
+## 12
+
+Image optimization
+
+`npm install img-loader --save-dev`
